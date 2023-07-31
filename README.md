@@ -1,6 +1,4 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/media/COMShield.jpg" width="342" height="240">
-  <source media="(prefers-color-scheme: light)" srcset="/media/lCOMShield.jpg" width="373" height="240">
   <img alt="Logo" src="/media/COMShield.jpg" width="373" height="240">
 </picture>  
 
