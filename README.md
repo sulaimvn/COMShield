@@ -15,15 +15,20 @@ COMShield tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HK
 2. Monitor the registration and usage of COM Object in Windows Event Log
 
 ## Requirements
-1. <ins>Python 3.10 or newer</ins>. If you're hit with a syntax error on match-case statements, this's why.
+1. <ins>Python 3.11 or newer</ins>. If you're hit with a syntax error on match-case statements, this's why.
 2. Using COMSheild in a Windows Enviroment. 
 3. Install required packages:
-  ```
-  python.exe pip.exe install -r requirements.txt
-  ```
+   ```
+   python.exe pip.exe install -r requirements.txt
+   ```
 
-
-## Deployment
+## Usage
+1. Clone the repository:
+   ```
+   https://github.com/sulaimvn/COMShield.git
+   ```
+2. Install the required packages
+3. Running COMShield
    ```
    python.exe COMSheild.py
    ```
