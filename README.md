@@ -16,7 +16,7 @@ COMShield tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HK
 
 ## Requirements
 1. <ins>Python 3.11 or newer</ins>. If you're hit with a syntax error on match-case statements, this's why.
-2. Using COMSheild in a Windows Enviroment. 
+2. Using COMShield in a Windows Enviroment. 
 3. Install required packages:
    ```
    python.exe pip.exe install -r requirements.txt
@@ -30,7 +30,7 @@ COMShield tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HK
 2. Install the required packages
 3. Running COMShield
    ```
-   python.exe COMSheild.py
+   python.exe COMShield.py
    ```
 ## Contact
 Please reach out to me directly about suggestions for **COMShield** at *sulaimvn@gmail.com* or *https://twitter.com/sulaimvn*.
