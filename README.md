@@ -3,7 +3,7 @@
 </picture>  
 
 # COMShield
-COMShield tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HKCU (HKEY_CURRENT_USER) in the registry inside CLSID.
+**COMShield** tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HKCU (HKEY_CURRENT_USER) in the registry inside CLSID.
 
 ## Overview 
 ### Description 
@@ -32,7 +32,7 @@ COMShield tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HK
    https://github.com/sulaimvn/COMShield.git
    ```
 2. Install the required packages
-3. Running COMShield
+3. Running COMShield in **Administrator privileges** 
    ```
    python.exe COMShield.py
    ```
