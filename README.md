@@ -1,5 +1,5 @@
 <picture>
-  <img alt="Logo" src="/media/COMShield.jpg" width="373" height="240">
+  <img alt="Logo" src="/media/COMShield.jpg" width="900" height="400">
 </picture>  
 
 # COMShield
