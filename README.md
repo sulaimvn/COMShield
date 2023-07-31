@@ -33,4 +33,4 @@ COMShield tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HK
    python.exe COMSheild.py
    ```
 ## Contact
-Please reach out to me directly about suggestions for **COMShield** at *sulaimvn\[at]gmail\[dot]com*.
+Please reach out to me directly about suggestions for **COMShield** at *sulaimvn@gmail.com* or *https://twitter.com/sulaimvn*.
