@@ -84,7 +84,7 @@ def compare_registry_values(csv_path=None, csv_filename=None):
                             break
                     i += 1
         except Exception as e:
-            print(f"Error accessing key {key_path_local}: {e}")
+            print(ERROR + time.ctime() + f"\tError accessing key {key_path_local}: {e}")
         finally:
             winreg.CloseKey(key_local)
 
@@ -114,7 +114,7 @@ def compare_registry_values(csv_path=None, csv_filename=None):
                             break
                     i += 1
         except Exception as e:
-            print(f"Error accessing key {key_path_current}: {e}")
+            print(ERROR + time.ctime() + f"\tError accessing key {key_path_current}: {e}")
         finally:
             winreg.CloseKey(key_current)
 
@@ -130,7 +130,7 @@ def compare_registry_values(csv_path=None, csv_filename=None):
         if key not in values_dict_local:
            diff_dict[key] = (None, value)
 
-    if len(diff_dict) > 0:
+    if len(diff_dict) > 1:
         csv_rows.append(["HKLM Path" , "HKLM default" , "HKCU Path", "HKCU default"])
         for key, values in diff_dict.items():
             if "_" in key and key.split("_")[1]:
@@ -149,7 +149,7 @@ def compare_registry_values(csv_path=None, csv_filename=None):
                 if csv_path and csv_filename:
                     csv_rows.append([f"HKEY_LOCAL_MACHINE\\{subkey_path}", local_machine_default, f"HKEY_CURRENT_USER\\{subkey_path}", curr_user_default])
                 else:
-                    print()
+                    print("\n" + INFO + f"\tIN {subkey_path}:")
                     time.sleep(1)
                     print(ALERT + f"\tIN HKEY_LOCAL_MACHINE\\{subkey_path}: {Colors.RED + local_machine_default + Colors.ENDC}")
                     time.sleep(1)
@@ -157,7 +157,7 @@ def compare_registry_values(csv_path=None, csv_filename=None):
 
     else:
         csv_rows.append(["No registry value differences found."])
-        print(WARNING + time_now() + "No registry value differences found.")
+        print(WARNING + time_now() + ": No registry value differences found.")
         
     # Write the output data to a CSV file
     if csv_path and csv_filename:
@@ -180,26 +180,25 @@ def main():
  '''
 
     print(logo)
-    parser = argparse.ArgumentParser(prog='COMShield', usage='python.exe COMShield.csv -HKCU --csv "C:\\temp" --csvf COMShield.csv', description='COMShield tool for Windows compares the registry values of a specific key between HKEY_LOCAL_MACHINE (HKLM) and HKEY_CURRENT_USER (HKCU) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found.')
+    parser = argparse.ArgumentParser(prog='COMShield', usage='\n\tpython.exe COMShield.py --csv "C:\\temp" --csvf COMShield.csv\n\tpython.exe COMShield.py -p', description='COMShield tool for Windows compares the registry values of a specific key between HKEY_LOCAL_MACHINE (HKLM) and HKEY_CURRENT_USER (HKCU) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found.')
     parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.1')
-    parser.add_argument('--HKCU', help='Compare registry values in HKEY_CURRENT_USER with HKEY_LOCAL_MACHINE', action='store_true')
     parser.add_argument("--csv", help="Path to the CSV file to save the results")
     parser.add_argument("--csvf", help="Name of the CSV file to save the results") 
     parser.add_argument("-p",  help="Print the results to the console", action='store_true')
     args = parser.parse_args()
 
     init()
-    print(Colors.GREEN + "\t\t" + "Sulaiman - Haboob Team" + "  Version: 0.1" + Colors.ENDC)
+    print(Colors.GREEN + "\t\t" + "Sulaiman -" + " Version: 0.1" + Colors.ENDC)
     print()
     
-    if args.HKCU and args.csv and args.csvf:
+    if args.csv and args.csvf:
         compare_registry_values(csv_path=args.csv, csv_filename=args.csvf)
         print("Results saved to: "+ Colors.GREEN +  args.csv +"\\" +args.csvf + Colors.ENDC)
-    elif args.HKCU and args.p:
+    elif args.p:
         compare_registry_values(csv_path=None, csv_filename=None)
 
     else:
-        print("For help: python.exe COMShield.exe --help")
+        print(ERROR + time.ctime() + ": python.exe COMShield.exe --help")
 
 try:
     main()
