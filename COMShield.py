@@ -145,7 +145,7 @@ def compare_registry_values(csv_path=None, csv_filename=None):
             local_machine_default = values[0] if values[0] is not None else "None"
             curr_user_default = values[1] if values[1] is not None else "None"
 
-            if local_machine_default != curr_user_default and local_machine_default not in ["Apartment", None] and curr_user_default not in ["Apartment", None]:
+            if local_machine_default != curr_user_default and local_machine_default not in ["Apartment", "Both", None] and curr_user_default not in ["Apartment","Both", None]:
                 if csv_path and csv_filename:
                     csv_rows.append([f"HKEY_LOCAL_MACHINE\\{subkey_path}", local_machine_default, f"HKEY_CURRENT_USER\\{subkey_path}", curr_user_default])
                 else:
