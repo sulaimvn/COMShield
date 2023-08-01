@@ -9,9 +9,9 @@ class Colors:
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
     RED = '\033[91m'
-    GREY = '\33[90m'
+    GREY = '\033[90m'
     ENDC = '\033[0m'
-
+    
 WARNING = Colors.YELLOW + "WARNING: " + Colors.ENDC
 ALERT = Colors.RED + "ALERT: " + Colors.ENDC
 INFO = Colors.GREY + "INFO: " + Colors.ENDC
@@ -180,17 +180,17 @@ def main():
  '''
 
     print(logo)
-    parser = argparse.ArgumentParser(prog='COMShield', usage='python.exe COMShield.py -HKCU --csv "C:\\temp" --csvf COMShield.py', description='COMShield tool for Windows compares the registry values of a specific key between HKEY_LOCAL_MACHINE (HKLM) and HKEY_CURRENT_USER (HKCU) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found.')
+    parser = argparse.ArgumentParser(prog='COMShield', usage='python.exe COMShield.csv -HKCU --csv "C:\\temp" --csvf COMShield.csv', description='COMShield tool for Windows compares the registry values of a specific key between HKEY_LOCAL_MACHINE (HKLM) and HKEY_CURRENT_USER (HKCU) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found.')
     parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.1')
     parser.add_argument('--HKCU', help='Compare registry values in HKEY_CURRENT_USER with HKEY_LOCAL_MACHINE', action='store_true')
     parser.add_argument("--csv", help="Path to the CSV file to save the results")
-    parser.add_argument("--csvf", help="Name of the CSV file to save the results")
+    parser.add_argument("--csvf", help="Name of the CSV file to save the results") 
     parser.add_argument("-p",  help="Print the results to the console", action='store_true')
     args = parser.parse_args()
 
     init()
     print(Colors.GREEN + "\t\t" + "Sulaiman - Haboob Team" + "  Version: 0.1" + Colors.ENDC)
-    print("\n")
+    print()
     
     if args.HKCU and args.csv and args.csvf:
         compare_registry_values(csv_path=args.csv, csv_filename=args.csvf)
@@ -208,6 +208,3 @@ except KeyboardInterrupt:
     sys.exit(0)
 except Exception as e:
     print(ERROR + time.ctime() + " Unknown error: " + str(e))
-
-
-
