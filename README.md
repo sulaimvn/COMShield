@@ -3,25 +3,28 @@
 </picture>  
 
 # COMShield
-**COMShield** tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and HKCU (HKEY_CURRENT_USER) in the registry inside CLSID.
+**COMShield** tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and ALL Users in the registry inside CLSID.
 
 ## Overview 
 ### Description 
-**COMShield** detects differences between the HKEY_LOCAL_MACHINE and HKEY_CURRENT_USER registry hives. Specifically, it looks for differences in the CLSID subkey of the Software\Classes key in both hives.
+**COMShield** tool for Windows compares the registry values of a specific key between HKEY_USERS (HKU) and HKEY_LOCAL_MACHINE (HKLM) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found.
 
 ## Features 
 ### Current features:
-1. Retrieving subkeys from the HKEY_LOCAL_MACHINE\Software\Classes\CLSID and HKEY_CURRENT_USER\Software\Classes\CLSID keys in the Windows registry.
+1. Retrieving subkeys from the HKEY_LOCAL_MACHINE\Software\Classes\CLSID and All Users CLSID keys in the Windows registry.
 2. Comparing the registry values between the two keys and printing out any differences found.
 
 ### Ideas in mind:
 1. Detects different persistence attacks in COM Object
 2. Monitor the registration and usage of COM Object in Windows Event Log
-
-## Requirements
-1. <ins>Python 3.11 or newer</ins>. If you're hit with a syntax error on match-case statements, this's why.
-2. Using COMShield in a Windows Enviroment. 
-3. Install required packages:
+   
+## Preparing
+1. Install RawCopy.exe
+2. install RECmd.exe
+3. install .NET 6
+4. <ins>Python 3.11 or newer</ins>. If you're hit with a syntax error on match-case statements, this's why.
+5. Using COMShield in a Windows Enviroment.
+6. Install required packages:
    ```
    python.exe pip.exe install -r requirements.txt
    ```
@@ -32,7 +35,7 @@
    https://github.com/sulaimvn/COMShield.git
    ```
 2. Install the required packages
-3. Running COMShield in **Administrator privileges** 
+3. Running COMShield as an **Administrator privileges** 
    ```
    python.exe COMShield.py
    ```
