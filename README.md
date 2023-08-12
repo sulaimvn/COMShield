@@ -1,6 +1,3 @@
-<picture>
-  <img alt="Logo" src="/media/COMShield.jpg" width="500" height="200">
-</picture>  
 
 # COMShield
 **COMShield** tool that detects differences between HKLM (HKEY_LOCAL_MACHINE) and ALL Users in the registry inside CLSID.
