@@ -4,7 +4,7 @@
 
 ## Overview 
 ### Description 
-**COMShield** tool for Windows compares the registry values of a specific key between HKEY_USERS (HKU) and HKEY_LOCAL_MACHINE (HKLM) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found.
+**COMShield** is a tool for Windows that compares the registry values of a specific key between HKEY_USERS (HKU) and HKEY_LOCAL_MACHINE (HKLM) in the CLSID registry. It detects any differences between the two which alerts the user if any discrepancies are found.
 
 ## Features 
 ### Current features:
