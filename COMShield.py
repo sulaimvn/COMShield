@@ -248,7 +248,7 @@ def main():
 
     print(logo)
     init()
-    parser = argparse.ArgumentParser(prog='COMShield', usage='\t\tpython.exe COMShield.py [options]', description='COMShield tool for Windows compares the registry values of a specific key between HKEY_USERS (HKU) and HKEY_LOCAL_MACHINE (HKLM) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found. \n\n Emaples:\n\n'
+    parser = argparse.ArgumentParser(prog='COMShield.py', usage='\t\tpython.exe COMShield.py [options]', description='COMShield tool for Windows compares the registry values of a specific key between HKEY_USERS (HKU) and HKEY_LOCAL_MACHINE (HKLM) in the CLSID registry. It detects any differences between the two and alerts the user if any discrepancies are found. \n\n Emaples:\n\n'
           '\tpython.exe %(prog)s \n'
           '\tpython.exe %(prog)s --path C:\\Users\\COM\\Desktop --output output.csv\n'
           '\tpython.exe %(prog)s --print', formatter_class=argparse.RawTextHelpFormatter)
