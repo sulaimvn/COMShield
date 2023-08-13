@@ -17,9 +17,9 @@
    
 ## Preparing
 1. Install RawCopy.exe
-2. install RECmd.exe
-3. install .NET 6
-4. <ins>Python 3.11 or newer</ins>. If you're hit with a syntax error on match-case statements, this's why.
+2. Install RECmd.exe
+3. Install .NET 6
+4. <ins>Python 3.11 or newer</ins>.
 5. Using COMShield in a Windows Enviroment.
 6. Install required packages:
    ```
@@ -37,4 +37,4 @@
    python.exe COMShield.py
    ```
 ## Contact
-Please reach out to me directly about suggestions for **COMShield** at *sulaimvn@gmail.com* or *https://twitter.com/sulaimvn*.
+Please reach out to me directly about suggestions for **COMShield** at *sulaimvn[at]gmail[dot]com* or *https://twitter.com/sulaimvn*.
