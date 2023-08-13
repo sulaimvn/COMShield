@@ -17,7 +17,19 @@
    
 ## Preparing
 1. Install RawCopy.exe
+   ```
+   Please ensure that the files are downloaded to the directory: C:\*\COMShield\RawCopy-master\ 
+
+   Link:
+   https://github.com/jschicht/RawCopy
+   ```
 2. Install RECmd.exe
+   ```
+   Please ensure that the files are downloaded to the directory: C:\*\COMShield\RECmd\
+   
+   Link:
+   https://f001.backblazeb2.com/file/EricZimmermanTools/net6/RECmd.zip
+   ```
 3. Install .NET 6
 4. <ins>Python 3.11 or newer</ins>.
 5. Using COMShield in a Windows Enviroment.
