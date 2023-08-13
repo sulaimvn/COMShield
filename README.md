@@ -12,8 +12,8 @@
 2. Comparing the registry values between the two keys and printing out any differences found.
 
 ### Ideas in mind:
-1. Detects different persistence attacks in COM Object
-2. Monitor the registration and usage of COM Object in Windows Event Log
+1. Detects different persistence attacks in COM Object.
+2. Monitor the registration and usage of COM Object in Windows Event Log.
    
 ## Preparing
 1. Install RawCopy.exe
