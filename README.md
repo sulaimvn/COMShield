@@ -31,7 +31,7 @@
    https://f001.backblazeb2.com/file/EricZimmermanTools/net6/RECmd.zip
    ```
 3. Install .NET 6
-4. <ins>Python 3.11 or newer</ins>.
+4. Python 3.11 or newer.
 5. Using COMShield in a Windows Enviroment.
 6. Install required packages:
    ```
@@ -43,8 +43,7 @@
    ```
    https://github.com/sulaimvn/COMShield.git
    ```
-2. Install the required packages
-3. Running COMShield as an **Administrator privileges** 
+2. Running COMShield as an **Administrator privileges** 
    ```
    python.exe COMShield.py
    ```
