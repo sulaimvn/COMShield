@@ -5,7 +5,6 @@ import winreg
 import re
 import csv
 import shutil
-import winreg
 import time
 import sys
 from colorama import init
