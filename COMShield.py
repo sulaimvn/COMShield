@@ -21,8 +21,6 @@ class Colors:
     ENDC = '\033[0m'
 
 WARNING = Colors.YELLOW + "WARNING: " + Colors.ENDC
-ALERT = Colors.RED + "ALERT: " + Colors.ENDC
-INFO = Colors.GREY + "INFO: " + Colors.ENDC
 ERROR = Colors.RED + "ERROR: " + Colors.ENDC
 
 
