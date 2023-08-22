@@ -1,10 +1,10 @@
 import os
 import subprocess
 import ctypes
-import winreg
 import re
 import csv
 import shutil
+import winreg
 import time
 import sys
 from colorama import init
@@ -107,9 +107,8 @@ def run_recmd(sid):
         clsid_pattern = re.compile(r"\{?[0-9A-F]{8}-?[0-9A-F]{4}-?[0-9A-F]{4}-?[0-9A-F]{4}-?[0-9A-F]{12}\}?", re.IGNORECASE)
         clsid_values = clsid_pattern.findall(output)
         clsid(clsid_values, input_file_path, destination_directory, sid, user)
-
-
-		
+        
+            
 def clsid(clsid_values, input_file_path, destination_directory, sid, user):
     data_regex = re.compile(r"Data:\s+([^\s\(\)]+)")
     data_dict = {}
@@ -119,20 +118,20 @@ def clsid(clsid_values, input_file_path, destination_directory, sid, user):
         output_clsid_dir = os.path.join(destination_directory, user, sid, clsid)
         os.makedirs(output_clsid_dir, exist_ok=True)
         output_clsid = os.path.join(output_clsid_dir, "CLSID.txt")
-        output = subprocess.run(iProcsvr32_command, shell=True, stdout=subprocess.PIPE).stdout.decode()      
+        output = subprocess.run(iProcsvr32_command, shell=True, stdout=subprocess.PIPE).stdout.decode()
         match = data_regex.search(output)
         
         if match:
             data = match.group(1)
             data_dict[clsid] = data
-
+        
     output_csv_file = os.path.join(os.path.dirname(__file__), "allusers_output.csv")
     
     with open(output_csv_file, "a", newline="") as f:
-        writer = csv.writer(f)      
+        writer = csv.writer(f) 
         for clsid, data in data_dict.items():
             writer.writerow([user, clsid, data])
-
+            
 
            
 def get_hklm():
@@ -271,54 +270,67 @@ def main():
         sys.exit(1)
         
     else:
-        copy_user_profile_data()
-        sids = get_sids()
-        for sid in sids:
-            run_recmd(sid)
-        shutil.rmtree(clear_dir)
-        get_hklm()
-        current_time = datetime.datetime.now()
-        formatted_time = current_time.strftime("%Y%m%d_%H%M%S")
-        default_name = formatted_time + "_COMShield.csv"
-        if args.output:
-            if args.path:
-                output_path = os.path.join(args.path, args.output)
-                compare_registry_values(output_path)
-                if args.print:
-                    command = 'type "{}"'.format(output_path)
-                    subprocess.run(command, shell=True)
-            else:
-                output_path = os.path.join(os.path.dirname(__file__), args.output)
-                compare_registry_values(output_path)
-                if args.print:
-                    command = 'type "{}"'.format(output_path)
-                    subprocess.run(command, shell=True)
-
-            print("Results saved to: " + Colors.GREEN + output_path + Colors.ENDC)
+        if not args.output and not args.print:
         
-        elif args.path:
-            output_path = os.path.join(args.path, default_name)
-            compare_registry_values(output_path)
-            print("Results saved to: " + Colors.GREEN + output_path + Colors.ENDC)
+            copy_user_profile_data()
 
+            sids = get_sids()
+
+            for sid in sids:
+                run_recmd(sid)
+            shutil.rmtree(clear_dir)
+            
+            get_hklm()
+            current_time = datetime.datetime.now()
+            formatted_time = current_time.strftime("%Y%m%d_%H%M%S")
+            default_name = formatted_time + "_COMShield.csv"
+            compare_registry_values(default_name)
+            print("Results saved to: " + Colors.GREEN + os.path.join(os.path.dirname(__file__), default_name) + Colors.ENDC)
+        
         elif args.print and not args.output:
+        
+            copy_user_profile_data()
+
+            sids = get_sids()
+
+            for sid in sids:
+                run_recmd(sid)
+            shutil.rmtree(clear_dir)
+            
+            get_hklm()
+            current_time = datetime.datetime.now()
+            formatted_time = current_time.strftime("%Y%m%d_%H%M%S")
+            default_name = formatted_time + "_COMShield.csv"
             compare_registry_values(default_name)
             print_file = os.path.join(os.path.dirname(__file__), default_name)
             command = 'type "{}"'.format(print_file)
             subprocess.run(command, shell=True)
-            os.remove(print_file)
-     
-  
-        elif not args.output and not args.path and not args.print:
-            compare_registry_values(default_name)
-            print("Results saved to: " + Colors.GREEN + os.path.join(os.path.dirname(__file__), default_name) + Colors.ENDC)
-  
+            os.remove(print_file)            
+        
+        else:
+            copy_user_profile_data()
 
-                   
+            sids = get_sids()
+
+            for sid in sids:
+                run_recmd(sid)
+            shutil.rmtree(clear_dir)
+            
+            get_hklm()
+            user_name = args.output
+            
+            compare_registry_values(user_name)
+            print("Results saved to: " + Colors.GREEN + os.path.join(os.path.dirname(__file__), args.output) + Colors.ENDC)
+
+        
+            
+            
+            
         hklmfile = os.path.join(os.path.dirname(__file__), "hklm_output.csv")
         allusersfile = os.path.join(os.path.dirname(__file__), "allusers_output.csv")
         os.remove(hklmfile)
         os.remove(allusersfile)
+        
         
         
         
